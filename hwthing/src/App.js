@@ -12,6 +12,12 @@ function App() {
       <Question6 />
       <Question7 />
       <Question8 />
+      <Question9 />
+      <Question10 />
+      <Question11 />
+      <Question12 />
+      <Question13 />
+      <Question14 />
     </div>
   );
 }
@@ -217,6 +223,93 @@ function Question8() {
     <br />
     <h1>Question 8</h1>
     <h2>Part A: 20 + 80e^-800t * cos(600t) + 127.5e^-800t * sin(600t)</h2>
+    </>
+  )
+}
+function Question9() {
+
+  const[partc, setPartc] = useState("");
+  const[partd, setPartd] = useState("");
+
+  const [num1, setNum1] = useState("initial value of current");
+  const [num2, setNum2] = useState("initial voltage");
+  const handleSubmit = (evt) => {
+    let formula1 = ((2000 * num1 * Math.pow(10, -3) + 0.5 * num2) * -1000) / 1500
+    evt.preventDefault();
+    setPartc(num1)
+    setPartd(formula1.toPrecision(3))
+  }
+  return(
+    <>
+    <br />
+    <h1>Question 9</h1>
+    <form onSubmit={handleSubmit}>
+
+      <input
+        type="text"
+        value={num1}
+        onChange={e => setNum1(e.target.value)}
+      />
+      <input
+        type="text"
+        value={num2}
+        onChange={e => setNum2(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: 8000 Ω</h2>
+    <h2>Part B: 2 H</h2>
+    <h2>Part C: {partc} mA</h2>
+    <h2>Part D: {partd} mA</h2>
+    </>
+  )
+}
+function Question10() {
+  return(
+    <>
+    <br />
+    <h1>Question 10</h1>
+    <h2>Part A: 2/3 * e^-250t + 4/3 * e^1000t</h2>
+    <h2>Part B: -267e^-250 - 133e^1000t</h2>
+
+    </>
+  )
+}
+function Question11() {
+  return(
+    <>
+    <br />
+    <h1>Question 11</h1>
+    <h2>Part A: -72 V</h2>
+    <h2>Part B: 144000</h2>
+    <h2>Part C: -48e^-100t - 24e^-4000t</h2>
+    </>
+  )
+}
+function Question12() {
+  return(
+    <>
+    <br />
+    <h1>Question 12</h1>
+    <h2>Part A: 20 - 10,000te^-500t - 20e^-500t</h2>
+    </>
+  )
+}
+function Question13() {
+  return(
+    <>
+    <br />
+    <h1>Question 13</h1>
+    <h2>Part A: 25 - 33.33e^-250t + 8.33e^-1000t</h2>
+    </>
+  )
+}
+function Question14() {
+  return(
+    <>
+    <br />
+    <h1>Question 14</h1>
+    <h2>Part A: 60 - 150e^-50t * cos(50t) - 200e^-50t * sin(50t)</h2>
     </>
   )
 }

@@ -8,6 +8,10 @@ function App() {
       <Question2 />
       <Question3 />
       <Question4 />
+      <Question5 />
+      <Question6 />
+      <Question7 />
+      <Question8 />
     </div>
   );
 }
@@ -33,7 +37,7 @@ function Question1() {
     let formula3 = Math.sqrt(num2/ ((4 * num3  * Math.pow(10, -6)) - (4 * Math.pow(num3  * Math.pow(10, -6), 2) * num2 * Math.pow(num4, 2))))
     let formula4 = 1/(2*formula3 * num3  * Math.pow(10, -6))
     let formula5 = Math.sqrt(num2 * num3  * Math.pow(10, -6)) / (2 * num3  * Math.pow(10, -6))
-    console.log(alpha);
+    
     setParta(formula1.toPrecision(3))
     setPartb(formula2.toPrecision(3))
     if (alpha > omega){
@@ -112,6 +116,107 @@ function Question4() {
     <br />
     <h1>Question 4</h1>
     <h2>Part A: 20e^-1250t * cos(928t) - 26.67^-1250t * sin(928t)</h2>
+    </>
+  )
+}
+
+function Question5() {
+  const[parta, setParta] = useState("");
+  const[partb, setPartb] = useState("");
+  const[partc, setPartc] = useState("");
+  const[partd, setPartd] = useState("");
+  
+  const [num1, setNum1] = useState("w");
+  const [num2, setNum2] = useState("L");
+  const [num3, setNum3] = useState("R in part A");
+  const [num4, setNum4] = useState("R in part C");
+  
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    let alpha = 125000 / num3
+    let alpha2 = 125000 / num4
+    let formula1 = Math.sqrt(Math.pow(num1, 2) - Math.pow(alpha, 2))
+    let formula2 = Math.sqrt(Math.pow(alpha2, 2) - Math.pow(num1, 2))
+    console.log(formula2);
+    if (alpha > num1){
+      setParta('over')
+    } else if (alpha == num2) {
+      setParta('critical')
+    } else {
+      setParta('under')
+    }
+    setPartb(-alpha.toPrecision(3) + '+ j' +  parseFloat(formula1.toPrecision(3)) + ',' + -alpha.toPrecision(3) + '- j' + parseFloat(formula1.toPrecision(3)))
+    if (alpha2 > num1){
+      setPartc('over')
+    } else if (alpha2 == num2) {
+      setPartc('critical')
+    } else {
+      setPartc('under')
+    }
+    setPartd(parseFloat((-alpha2 + formula2).toPrecision(3)) + ',' + parseFloat((-alpha2 - formula2).toPrecision(3)))
+  }
+
+  return (
+    <>
+    <h1>Question 5</h1>
+    <form onSubmit={handleSubmit}>
+
+        <input
+          type="text"
+          value={num1}
+          onChange={e => setNum1(e.target.value)}
+        />
+        <input
+          type="text"
+          value={num2}
+          onChange={e => setNum2(e.target.value)}
+        />
+        <input
+          type="text"
+          value={num3}
+          onChange={e => setNum3(e.target.value)}
+        />
+        <input
+          type="text"
+          value={num4}
+          onChange={e => setNum4(e.target.value)}
+        />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: {parta}</h2>
+    <h2>Part B: {partb}</h2>
+    <h2>Part C: {partc}</h2>
+    <h2>Part D: {partd}</h2>
+
+    </>
+  )
+}
+function Question6() {
+  return(
+    <>
+    <br />
+    <h1>Question 6</h1>
+    <h2>Part A: 12000te^-1000t * cos(928t) + 12e^-1000t</h2>
+    </>
+  )
+}
+function Question7() {
+  return(
+    <>
+    <br />
+    <h1>Question 7</h1>
+    <h2>Part A: 0.1 + 0.5e^-200t - 0.5e^-800t</h2>
+    <h2>Part B: -25e^-200t + 100e^-800t</h2>
+
+    </>
+  )
+}
+function Question8() {
+  return(
+    <>
+    <br />
+    <h1>Question 8</h1>
+    <h2>Part A: 20 + 80e^-800t * cos(600t) + 127.5e^-800t * sin(600t)</h2>
     </>
   )
 }

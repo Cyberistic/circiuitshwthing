@@ -692,16 +692,21 @@ function Question13() {
 
   const[parta, setParta] = useState("");
   const[partb, setPartb] = useState("");
+  const[parte, setParte] = useState("");
+  const[partf, setPartf] = useState("");
 
   const [num1, setNum1] = useState("R");
   const handleSubmit = (evt) => {
     evt.preventDefault();
     //let formula1 = math.evaluate(`((${num1} + ${math.complex('50 + 60i')})*(${math.complex('-100i')}))/((${num1} + ${math.complex('50 + 60i')}) + (${math.complex('-100i')}))`)
     // let formula1 = math.evaluate(`${math.complex('0.4-0.2i')} * ${math.Complex.fromPolar(parseInt(num1), 0)} + ${math.complex('0.15+0.05i')} * ${math.Complex.fromPolar(parseInt(num2), parseInt(num3))}`)
-    let formula1 = math.evaluate(`0.1 * ${num1} * (1 /  (${math.complex(400, 3 * num1)}))`)
+    let formula1 = math.evaluate(`${math.complex(0, 40 * num1)} * (1 /  (${math.complex(0, -num1)} + ${math.complex(400, 4 * num1)}))`)
+    let formula2 = math.evaluate(`${math.complex(0, -8000)} * (1 /  (${math.complex(3 * num1, 400)}))`)
     console.log(formula1);
     setParta(math.complex(formula1).abs().toPrecision(3))
     setPartb((math.complex(formula1).arg() / 0.017453).toPrecision(3))
+    setParte(math.complex(formula2).abs().toPrecision(3))
+    setPartf((math.complex(formula2).arg() / 0.017453).toPrecision(3))
   }
   return(
     <>
@@ -717,11 +722,13 @@ function Question13() {
       <input type="submit" value="Submit" />
     </form>
     <h2>Part A: superposition</h2>
-    {// <h2>Part B: {parta}</h2>
-    //<h2>Part C: {partb}</h2>
-  }
-
+    <h2>Part B: {parta} V</h2>
+    <h2>Part C: {partb}</h2>
     <h2>Part D: 16000 rad/s</h2>
+    <h2>Part E: {parte} V</h2>
+    <h2>Part F: {partf}</h2>
+    <h2>Part G: 4000 rad/s</h2>
+
 
     </>
   )

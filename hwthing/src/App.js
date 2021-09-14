@@ -711,7 +711,7 @@ function Question13() {
   return(
     <>
     <br />
-    <h1>Question 13 (not fully solved yet)</h1>
+    <h1>Question 13</h1>
     <form onSubmit={handleSubmit}>
 
       <input

@@ -343,7 +343,7 @@ function Question2() {
   return(
   <>
   <br />
-  <h1>Question 1</h1>
+  <h1>Question 2</h1>
   <h2>Part A: number before cos() in the question, unit is V</h2>
   <h2>Part B: 50</h2>
   <h2>Part C: 314</h2>

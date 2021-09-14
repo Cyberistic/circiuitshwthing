@@ -12,19 +12,26 @@ function App() {
       <Question3 />
       <Question4 />
       <Question5 />
-      <Question9 />
-
-      {/* 
       <Question6 />
-      
-      
       <Question7 />
       <Question8 />
-      
+      <Question9 />
       <Question10 />
       <Question11 />
       <Question12 />
       <Question13 />
+
+      {/* 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <Question14 /> */}
     </div>
   );
@@ -443,38 +450,114 @@ function Question5() {
   )
 }
 
-// function Question6() {
+function Question6() {
 
-//   const[parta, setParta] = useState("");
-//   const[partb, setPartb] = useState("");
+  const[parta, setParta] = useState("");
+  const[partb, setPartb] = useState("");
 
-//   const [num1, setNum1] = useState("R");
-//   const handleSubmit = (evt) => {
-//     evt.preventDefault();
-//     let formula1 = math.evaluate(`((${num1} + ${math.complex('50 - 60i')})*(${math.complex('-100i')}))/(${num1} + ${math.complex('50 - 40i')})`)
-//     let formula2 = math.evaluate(`200/(${num1} + ${math.complex('50 + 60i')})`)
-//     console.log(formula1);
-//     setParta(formula1.format(3))
-//     setPartb(formula2.format(3))
-//   }
-//   return(
-//     <>
-//     <br />
-//     <h1>Question 6</h1>
-//     <form onSubmit={handleSubmit}>
+  const [num1, setNum1] = useState("R");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    let formula1 = math.evaluate(`((${num1} + ${math.complex('50 + 60i')})*(${math.complex('-100i')}))/((${num1} + ${math.complex('50 + 60i')}) + (${math.complex('-100i')}))`)
+    let formula2 = math.evaluate(`200/(${num1} + ${math.complex('50 + 60i')})`)
+    setParta(formula1.format(3).slice(0, -1) + 'j')
+    setPartb(formula2.format(3).slice(0, -1) + 'j')
+  }
+  return(
+    <>
+    <br />
+    <h1>Question 6</h1>
+    <form onSubmit={handleSubmit}>
 
-//       <input
-//         type="text"
-//         value={num1}
-//         onChange={e => setNum1(e.target.value)}
-//       />
-//       <input type="submit" value="Submit" />
-//     </form>
-//     <h2>Part A: {parta}</h2>
-//     <h2>Part B: {partb}</h2>
-//     </>
-//   )
-// }
+      <input
+        type="text"
+        value={num1}
+        onChange={e => setNum1(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: {parta}</h2>
+    <h2>Part B: {partb}</h2>
+    </>
+  )
+}
+function Question7() {
+
+  const[parta, setParta] = useState("");
+  const[partb, setPartb] = useState("");
+
+  const [num1, setNum1] = useState("R");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    //let formula1 = math.evaluate(`((${num1} + ${math.complex('50 + 60i')})*(${math.complex('-100i')}))/((${num1} + ${math.complex('50 + 60i')}) + (${math.complex('-100i')}))`)
+    let formula1 = math.evaluate(`(${math.complex('5 + 5i')}) * (1 - (${math.complex('0 + 2i')} / ${num1}))`)
+    let formula2 = math.evaluate(`1/((-0.25/${num1}) + ${math.complex('-0.025i')})`)
+    setParta(formula1.format(3).slice(0, -1) + 'j')
+    setPartb(formula2.format(3).slice(0, -1) + 'j')
+  }
+  return(
+    <>
+    <br />
+    <h1>Question 7</h1>
+    <form onSubmit={handleSubmit}>
+
+      <input
+        type="text"
+        value={num1}
+        onChange={e => setNum1(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: {parta}</h2>
+    <h2>Part B: {partb}</h2>
+    </>
+  )
+}
+function Question8() {
+
+  const[parta, setParta] = useState("");
+  const[partb, setPartb] = useState("");
+
+  const [num1, setNum1] = useState("num before cos in ig");
+  const [num2, setNum2] = useState("num before cos in vg");
+  const [num3, setNum3] = useState("angle after + in vg");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    //let formula1 = math.evaluate(`((${num1} + ${math.complex('50 + 60i')})*(${math.complex('-100i')}))/((${num1} + ${math.complex('50 + 60i')}) + (${math.complex('-100i')}))`)
+    // let formula1 = math.evaluate(`${math.complex('0.4-0.2i')} * ${math.Complex.fromPolar(parseInt(num1), 0)} + ${math.complex('0.15+0.05i')} * ${math.Complex.fromPolar(parseInt(num2), parseInt(num3))}`)
+    let formula1 = math.evaluate(`(${math.complex('0.4-0.2i')}) * ${math.Complex.fromPolar(parseInt(num1), 0)} + (${math.complex('0.15+0.05i')}) * (${math.Complex.fromPolar(parseInt(num2), parseInt(num3) * 0.017453)})`)
+    setParta(math.complex(formula1).abs().toPrecision(3))
+    setPartb((math.complex(formula1).arg() / 0.017453).toPrecision(3))
+  }
+  return(
+    <>
+    <br />
+    <h1>Question 8</h1>
+    <form onSubmit={handleSubmit}>
+
+      <input
+        type="text"
+        value={num1}
+        onChange={e => setNum1(e.target.value)}
+      />
+            <input
+        type="text"
+        value={num2}
+        onChange={e => setNum2(e.target.value)}
+      />
+            <input
+        type="text"
+        value={num3}
+        onChange={e => setNum3(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: {parta} A</h2>
+    <h2>Part B: 2500 rad/s</h2>
+    <h2>Part C: {partb}</h2>
+    </>
+  )
+}
 
 function Question9() {
 
@@ -501,6 +584,145 @@ function Question9() {
     </form>
     <h2>Part A: {parta + '.0@PHASOR\{90\}'}</h2>
     <h2>Part B: {'j' + parta}</h2>
+    </>
+  )
+}
+function Question10() {
+
+  const[parta, setParta] = useState("");
+  const[partb, setPartb] = useState("");
+
+  const [num1, setNum1] = useState("R");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    //let formula1 = math.evaluate(`((${num1} + ${math.complex('50 + 60i')})*(${math.complex('-100i')}))/((${num1} + ${math.complex('50 + 60i')}) + (${math.complex('-100i')}))`)
+    // let formula1 = math.evaluate(`${math.complex('0.4-0.2i')} * ${math.Complex.fromPolar(parseInt(num1), 0)} + ${math.complex('0.15+0.05i')} * ${math.Complex.fromPolar(parseInt(num2), parseInt(num3))}`)
+    let formula1 = math.evaluate(`(${math.complex('40+120i')}) * (${num1} /  ( ${num1} + ${math.complex('-90-70i')}))`)
+    setParta(math.complex(formula1).abs().toPrecision(3))
+    setPartb((math.complex(formula1).arg() / 0.017453).toPrecision(3))
+  }
+  return(
+    <>
+    <br />
+    <h1>Question 10</h1>
+    <form onSubmit={handleSubmit}>
+
+      <input
+        type="text"
+        value={num1}
+        onChange={e => setNum1(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: {parta} V</h2>
+    <h2>Part C: {partb}</h2>
+    <h2>Part B: 5000 rad/s</h2>
+    </>
+  )
+}
+function Question11() {
+
+  const[parta, setParta] = useState("");
+  const[partb, setPartb] = useState("");
+
+  const [num1, setNum1] = useState("R");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    //let formula1 = math.evaluate(`((${num1} + ${math.complex('50 + 60i')})*(${math.complex('-100i')}))/((${num1} + ${math.complex('50 + 60i')}) + (${math.complex('-100i')}))`)
+    // let formula1 = math.evaluate(`${math.complex('0.4-0.2i')} * ${math.Complex.fromPolar(parseInt(num1), 0)} + ${math.complex('0.15+0.05i')} * ${math.Complex.fromPolar(parseInt(num2), parseInt(num3))}`)
+    let formula1 = math.evaluate(`100 * ((${math.complex('500-1000i')}) /  ( (${math.complex(num1, 1600)}) + (${math.complex('500-1000i')})))`)
+    console.log(formula1);
+    setParta(math.complex(formula1).abs().toPrecision(3))
+    setPartb((math.complex(formula1).arg() / 0.017453).toPrecision(3))
+  }
+  return(
+    <>
+    <br />
+    <h1>Question 11</h1>
+    <form onSubmit={handleSubmit}>
+
+      <input
+        type="text"
+        value={num1}
+        onChange={e => setNum1(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: {parta} V</h2>
+    <h2>Part B: {partb}</h2>
+    <h2>Part C: 8000 rad/s</h2>
+    </>
+  )
+}
+function Question12() {
+
+  const[parta, setParta] = useState("");
+  const[partb, setPartb] = useState("");
+
+  const [num1, setNum1] = useState("R");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    //let formula1 = math.evaluate(`((${num1} + ${math.complex('50 + 60i')})*(${math.complex('-100i')}))/((${num1} + ${math.complex('50 + 60i')}) + (${math.complex('-100i')}))`)
+    // let formula1 = math.evaluate(`${math.complex('0.4-0.2i')} * ${math.Complex.fromPolar(parseInt(num1), 0)} + ${math.complex('0.15+0.05i')} * ${math.Complex.fromPolar(parseInt(num2), parseInt(num3))}`)
+    let formula1 = math.evaluate(`400 * 0.001 * ((${math.complex(num1, 1200)}) /  ( (${num1}) + (${math.complex('200+800i')})))`)
+    console.log(formula1);
+    setParta(math.complex(formula1).abs().toPrecision(3))
+    setPartb((math.complex(formula1).arg() / 0.017453).toPrecision(3))
+  }
+  return(
+    <>
+    <br />
+    <h1>Question 12</h1>
+    <form onSubmit={handleSubmit}>
+
+      <input
+        type="text"
+        value={num1}
+        onChange={e => setNum1(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: {parta} A</h2>
+    <h2>Part B: {partb}</h2>
+    <h2>Part C: 20000 rad/s</h2>
+    </>
+  )
+}
+function Question13() {
+
+  const[parta, setParta] = useState("");
+  const[partb, setPartb] = useState("");
+
+  const [num1, setNum1] = useState("R");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    //let formula1 = math.evaluate(`((${num1} + ${math.complex('50 + 60i')})*(${math.complex('-100i')}))/((${num1} + ${math.complex('50 + 60i')}) + (${math.complex('-100i')}))`)
+    // let formula1 = math.evaluate(`${math.complex('0.4-0.2i')} * ${math.Complex.fromPolar(parseInt(num1), 0)} + ${math.complex('0.15+0.05i')} * ${math.Complex.fromPolar(parseInt(num2), parseInt(num3))}`)
+    let formula1 = math.evaluate(`0.1 * ${num1} * (1 /  (${math.complex(400, 3 * num1)}))`)
+    console.log(formula1);
+    setParta(math.complex(formula1).abs().toPrecision(3))
+    setPartb((math.complex(formula1).arg() / 0.017453).toPrecision(3))
+  }
+  return(
+    <>
+    <br />
+    <h1>Question 13 (not fully solved yet)</h1>
+    <form onSubmit={handleSubmit}>
+
+      <input
+        type="text"
+        value={num1}
+        onChange={e => setNum1(e.target.value)}
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2>Part A: superposition</h2>
+    {// <h2>Part B: {parta}</h2>
+    //<h2>Part C: {partb}</h2>
+  }
+
+    <h2>Part D: 16000 rad/s</h2>
+
     </>
   )
 }

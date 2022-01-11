@@ -20,6 +20,7 @@ function App() {
       <Question11 />
       <Question12 />
       <Question13 />
+      <Endcredit />
 
       {/* 
       
@@ -730,6 +731,16 @@ function Question13() {
     <h2>Part G: 4000 rad/s</h2>
 
 
+    </>
+  )
+}
+
+function Endcredit() {
+  return(
+    <>
+    <br />
+    <h1>استفدت من الموقع؟ تصدق ولو ب100 فلس</h1>
+    <a href="https://baitalkhairkw.org/">https://baitalkhairkw.org/</a>
     </>
   )
 }
